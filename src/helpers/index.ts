@@ -1,1 +1,2 @@
-export * from './browserMedia'
+export * from './browser'
+export * from './user-media'
