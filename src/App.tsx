@@ -27,22 +27,26 @@ function App() {
   }
 
   const start = async () => {
-    setIsListening(true)
-    model?.listen(
-      async (result) => {
-        setActions(labels[argMax(Object.values(result.scores))])
-      },
-      {
-        includeSpectrogram: true,
-        // ? Try changing threshold, the lower number => the more flexible model
-        probabilityThreshold: 0.9,
-      }
-    )
+    await model
+      ?.listen(
+        async (result) => {
+          setActions(labels[argMax(Object.values(result.scores))])
+        },
+        {
+          includeSpectrogram: true,
+          // ? Try changing threshold, the lower number => the more flexible model
+          probabilityThreshold: 0.9,
+        }
+      )
+      .then(() => {
+        setIsListening(true)
+      })
   }
 
   const stop = async () => {
-    setIsListening(false)
-    await model!.stopListening()
+    await model!.stopListening().then(() => {
+      setIsListening(false)
+    })
   }
 
   R.useEffect(() => {
