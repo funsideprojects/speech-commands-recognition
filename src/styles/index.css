@@ -1,0 +1,27 @@
+@import 'tailwind.css';
+
+html,
+body {
+  @apply w-full h-full;
+  scroll-behavior: smooth;
+  /* Disable web page navigation on swipe(back and forward) */
+  /* overscroll-behavior-x: none; */
+}
+
+html {
+  ::-webkit-scrollbar {
+    @apply w-2 h-2 bg-gray-200 hover:bg-gray-300;
+  }
+  /* Track */
+  ::-webkit-scrollbar-track {
+    @apply rounded-xl;
+  }
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    @apply h-1 rounded-xl bg-gray-400 transition-all hover:bg-gray-500;
+  }
+}
+
+body {
+  direction: ltr;
+}

@@ -10,11 +10,7 @@
   ],
   "rules": {
     "prettier": [
-      true,
-      ".prettierrc",
-      {
-        "editorconfig": false
-      }
+      true
     ],
     "ordered-imports": [
       false
@@ -126,7 +122,6 @@
   "linterOptions": {
     "exclude": [
       "node_modules/**/*.ts",
-      "src/serviceWorker.js",
       "config-overrides.js"
     ]
   }

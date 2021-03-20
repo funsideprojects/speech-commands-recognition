@@ -27,15 +27,15 @@ function App() {
   }
 
   const start = async () => {
-    await model
-      ?.listen(
+    await model!
+      .listen(
         async (result) => {
           setActions(labels[argMax(Object.values(result.scores))])
         },
         {
           includeSpectrogram: true,
           // ? Try changing threshold, the lower number => the more flexible model
-          probabilityThreshold: 0.9,
+          probabilityThreshold: 0.8,
         }
       )
       .then(() => {
@@ -55,8 +55,10 @@ function App() {
   }, [])
 
   return (
-    <div>
-      <button onClick={isListening ? stop : start}>{isListening ? 'Stop' : 'Start'}</button>
+    <div className="container">
+      <button className="bg-green-600 focus:outline-none" onClick={isListening ? stop : start}>
+        {isListening ? 'Stop' : 'Start'}
+      </button>
       <div>{actions || 'No action detected'}</div>
     </div>
   )
